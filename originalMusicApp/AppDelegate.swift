@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             deleteRealmIfMigrationNeeded: true
         )
         Realm.Configuration.defaultConfiguration = config
-        
+        //navigationBar半透明をof
+        UINavigationBar.appearance().isTranslucent = false
         
         return true
     }

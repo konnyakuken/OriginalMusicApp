@@ -6,24 +6,28 @@
 //
 
 import UIKit
+import RealmSwift
 
-class CreatePlaylistViewController: UIViewController {
+
+class CreatePlaylistViewController: BaseViewController {
+    
+    @IBOutlet var titleTextField: UITextField!
+    @IBOutlet var detailTextField: UITextView!
+    
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
 
         // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func read() -> Playlist?{
+        return realm.objects(Playlist.self).first
     }
-    */
+    
+    
 
 }

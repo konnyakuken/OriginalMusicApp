@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShazamViewController: UIViewController {
+class ShazamViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

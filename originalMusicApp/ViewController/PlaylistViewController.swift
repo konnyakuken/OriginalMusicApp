@@ -7,10 +7,12 @@
 
 import UIKit
 
-class PlaylistViewController: UIViewController {
+class PlaylistViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        extendedLayoutIncludesOpaqueBars = true
 
         // Do any additional setup after loading the view.
     }

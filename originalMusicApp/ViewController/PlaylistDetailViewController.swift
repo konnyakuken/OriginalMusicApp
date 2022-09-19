@@ -7,11 +7,13 @@
 
 import UIKit
 
-class PlaylistDetailViewController: UIViewController {
+class PlaylistDetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //back off
+        self.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
     }
     
