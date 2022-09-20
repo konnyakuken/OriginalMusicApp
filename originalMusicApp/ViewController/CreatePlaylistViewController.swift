@@ -12,7 +12,7 @@ import RealmSwift
 class CreatePlaylistViewController: BaseViewController {
     
     @IBOutlet var titleTextField: UITextField!
-    @IBOutlet var detailTextField: UITextView!
+    @IBOutlet var addPlaylistButton: UIButton!
     
     let realm = try! Realm()
 
@@ -26,6 +26,51 @@ class CreatePlaylistViewController: BaseViewController {
 
     func read() -> Playlist?{
         return realm.objects(Playlist.self).first
+    }
+    
+    @IBAction func save(){
+        let playlistTitle: String = titleTextField.text!
+
+        if(playlistTitle != ""){
+            addPlaylist(playlistTitle: playlistTitle)
+            let alert: UIAlertController = UIAlertController(title: "成功", message: "作成しました", preferredStyle: .alert)
+            alert.addAction(
+                UIAlertAction(title: "OK", style: .default,handler: {_ in self.toNext()})
+            )
+            present(alert,animated:true,completion: nil)
+        }else{
+            let alert: UIAlertController = UIAlertController(title: "失敗", message: "すべての項目を埋めてください", preferredStyle: .alert)
+            alert.addAction(
+                UIAlertAction(title: "OK", style: .default,handler: nil)
+            )
+            present(alert,animated:true,completion: nil)
+        }
+
+    }
+    
+    func toNext(){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: "PlaylistDetail")as? PlaylistDetailViewController else
+        { return }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func addPlaylist(playlistTitle:String){
+        let playlist: Playlist? = read()
+        //インスタンス作成
+        let newPlaylist = Playlist()
+        newPlaylist.playlist_name = playlistTitle
+        
+        if playlist != nil {
+            let results = realm.objects(Playlist.self)
+            newPlaylist.id = (Int(results[results.count - 1].id)) + 1
+        } else {
+            newPlaylist.id = 1
+        }
+        try! realm.write{
+            realm.add(newPlaylist)
+        }
+        print(realm.objects(Playlist.self))
     }
     
     
