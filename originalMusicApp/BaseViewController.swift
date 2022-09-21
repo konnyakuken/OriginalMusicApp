@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class BaseViewController: UIViewController {
+    
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,10 @@ class BaseViewController: UIViewController {
             navigationItem.backBarButtonItem = backItem
             //navigationController?.navigationBar.backIndicatorImage = hogeImage
             //navigationController?.navigationBar.backIndicatorTransitionMaskImage = hogeImage
+    }
+    
+    func read() -> Playlist?{
+        return realm.objects(Playlist.self).first
     }
 
 }

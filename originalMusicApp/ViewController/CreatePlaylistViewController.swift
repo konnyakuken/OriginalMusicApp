@@ -14,19 +14,15 @@ class CreatePlaylistViewController: BaseViewController {
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var addPlaylistButton: UIButton!
     
-    let realm = try! Realm()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
         // Do any additional setup after loading the view.
     }
     
 
-    func read() -> Playlist?{
-        return realm.objects(Playlist.self).first
-    }
+    
     
     @IBAction func save(){
         let playlistTitle: String = titleTextField.text!
