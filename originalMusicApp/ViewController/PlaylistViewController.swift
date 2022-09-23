@@ -23,20 +23,40 @@ class PlaylistViewController: BaseViewController,UICollectionViewDelegate,UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let result = realm.objects(Playlist.self).count
         //セクションの中のセルの数
-        return realm.objects(Playlist.self).count
+        return result+1
     }
     
     //セルに表示する内容
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         //セルの生成
         let cell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaylistCell", for: indexPath)
         //label設定
         let label = cell.contentView.viewWithTag(1) as! UILabel
         
-        label.text = String(indexPath.row + 1)
+        if(indexPath.row == 0){
+            label.text = "新しいプレイリストを作成"
+            label.numberOfLines = 0
+        }else{
+            let playlistDB = realm.objects(Playlist.self).filter("id == %@",indexPath.row)
+            label.text = String(playlistDB[0].playlist_name)
+        }
         return cell
     }
+    
+    //Cellがクリックされた時によばれます
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //print("選択しました: \(indexPath.row)")
+        if(indexPath.row == 0){
+            toCreatePlaylist()
+        }else{
+            let playlistId = realm.objects(Playlist.self).filter("id == %@",indexPath.row)[0].id
+            toPlaylistDetail(id: playlistId)
+        }
+    }
+    
     
     //セルのサイズを指定する処理
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -49,5 +69,19 @@ class PlaylistViewController: BaseViewController,UICollectionViewDelegate,UIColl
         return CGSize(width: cellSize, height: cellSize)
     }
     
+    func toCreatePlaylist(){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: "CreatePlaylist")as? CreatePlaylistViewController else
+        { return }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func toPlaylistDetail(id: Int){
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: "PlaylistDetail")as? PlaylistDetailViewController else
+        { return }
+        vc.id = String(id)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
 }

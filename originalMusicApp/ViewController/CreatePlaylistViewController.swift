@@ -14,6 +14,7 @@ class CreatePlaylistViewController: BaseViewController {
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var addPlaylistButton: UIButton!
     
+    var newId = 0
     
 
     override func viewDidLoad() {
@@ -48,6 +49,7 @@ class CreatePlaylistViewController: BaseViewController {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = storyBoard.instantiateViewController(withIdentifier: "PlaylistDetail")as? PlaylistDetailViewController else
         { return }
+        vc.id = String(newId)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -60,6 +62,7 @@ class CreatePlaylistViewController: BaseViewController {
         if playlist != nil {
             let results = realm.objects(Playlist.self)
             newPlaylist.id = (Int(results[results.count - 1].id)) + 1
+            newId = (Int(results[results.count - 1].id)) + 1
         } else {
             newPlaylist.id = 1
         }

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="whE-68-VQo">
-                                <rect key="frame" x="-2" y="47" width="414" height="44"/>
+                                <rect key="frame" x="-3" y="47" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textAttributes key="titleTextAttributes">
@@ -72,7 +72,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtq-dh-rc0">
-                                <rect key="frame" x="-4" y="47" width="417" height="44"/>
+                                <rect key="frame" x="-5" y="47" width="418" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textAttributes key="titleTextAttributes">
@@ -82,21 +82,8 @@
                                     <navigationItem title="プレイリスト" id="WcM-LB-a38"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwJ-Te-vod">
-                                <rect key="frame" x="47" y="169" width="123" height="116"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.33725490200000002" green="0.34594474870000003" blue="0.31044994370000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="新しいプレイリストを作成">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="22"/>
-                                    <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="sSl-J3-ej7" kind="show" id="9Oz-2a-8yD"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XZa-hV-T9l">
-                                <rect key="frame" x="20" y="335" width="374" height="443"/>
+                                <rect key="frame" x="20" y="126" width="374" height="652"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JEj-mq-d4K">
@@ -172,7 +159,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J20-U6-scZ">
-                                <rect key="frame" x="-2" y="47" width="414" height="44"/>
+                                <rect key="frame" x="-3" y="47" width="415" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -185,19 +172,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tes-2W-qQ8">
-                                <rect key="frame" x="-2" y="815" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.20392158630000001" green="0.20392158630000001" blue="0.20392158630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <items>
-                                    <barButtonItem title="けんさく" id="3dP-42-b1i"/>
-                                    <barButtonItem title="ライブラリ" id="ndj-yv-v2w"/>
-                                </items>
-                                <color key="tintColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                                <color key="barTintColor" red="0.20392158630000001" green="0.20392158630000001" blue="0.20392158630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="プレイリスト名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkP-bK-0kb">
-                                <rect key="frame" x="47" y="116" width="297" height="29"/>
+                                <rect key="frame" x="47" y="97" width="297" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
@@ -224,49 +200,13 @@
                         <color key="backgroundColor" red="0.050980392159999999" green="0.0039215686269999999" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="ViM-Hu-Lqu"/>
+                    <connections>
+                        <outlet property="playlistTitle" destination="UkP-bK-0kb" id="2Z5-WE-dWP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Usd-en-MZI" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3762.3188405797105" y="-28.794642857142854"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="KoA-GT-Twt">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L8j-dy-DzH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" enabled="NO" title="" id="DGO-nk-XMw"/>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="7Uj-x9-hS4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kee-hX-2Pl">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="sSl-J3-ej7" kind="relationship" relationship="rootViewController" id="FUx-tQ-J7j"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lvU-zW-ayR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1733.8461538461538" y="-901.42180094786727"/>
-        </scene>
-        <!--詳細-->
-        <scene sceneID="wVU-mm-nrt">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wNE-8e-7jS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="詳細" id="e3j-C7-AXw"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="i3U-ng-IVV">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BWk-sc-CbU" kind="relationship" relationship="rootViewController" id="Jap-3C-n4H"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gS8-EO-45K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2833.8461538461538" y="-28.436018957345969"/>
+            <point key="canvasLocation" x="3176.811594202899" y="-29.464285714285712"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="99e-ae-IYN">
@@ -284,8 +224,6 @@
                     <connections>
                         <segue destination="cM8-75-R7y" kind="relationship" relationship="viewControllers" id="k0d-kL-7vl"/>
                         <segue destination="RZK-Xi-Jm3" kind="relationship" relationship="viewControllers" id="VYj-KO-0eW"/>
-                        <segue destination="wNE-8e-7jS" kind="relationship" relationship="viewControllers" id="aiB-uQ-LIa"/>
-                        <segue destination="L8j-dy-DzH" kind="relationship" relationship="viewControllers" id="yRv-5A-5qn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OOw-Dh-wqj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -301,7 +239,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xfi-Ax-hCv">
-                                <rect key="frame" x="-3" y="47" width="417" height="44"/>
+                                <rect key="frame" x="-4" y="47" width="417" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textAttributes key="titleTextAttributes">
@@ -380,9 +318,6 @@
             <point key="canvasLocation" x="953.62318840579712" y="689.73214285714278"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="9Oz-2a-8yD"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="smallcircle.circle" catalog="system" width="128" height="123"/>

@@ -6,26 +6,25 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PlaylistDetailViewController: BaseViewController {
-
+    
+    var id = ""
+    @IBOutlet var playlistTitle: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //back off
-        self.navigationItem.hidesBackButton = true
-        // Do any additional setup after loading the view.
+        //self.navigationItem.hidesBackButton = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //Viewが表示される直前に呼ばれる。
+    override func viewWillAppear(_ animated: Bool) {
+        let playlistName = realm.objects(Playlist.self).filter("id == %@",Int((id as NSString).doubleValue))[0].playlist_name
+        playlistTitle.text = playlistName
     }
-    */
+
 
 }
