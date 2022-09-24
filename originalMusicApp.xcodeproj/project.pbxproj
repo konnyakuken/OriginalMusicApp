@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A02AE87428DF2CD5005F24BF /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0832FF928DE2C5000FED2D7 /* SpotifyiOS.framework */; };
+		A02AE87528DF2CD5005F24BF /* SpotifyiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0832FF928DE2C5000FED2D7 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A02AE87828DF2ED4005F24BF /* SpotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02AE87728DF2ED4005F24BF /* SpotifyManager.swift */; };
 		A05035A028D7FD1900994425 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A050359F28D7FD1900994425 /* AppDelegate.swift */; };
 		A05035A228D7FD1900994425 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05035A128D7FD1900994425 /* SceneDelegate.swift */; };
 		A05035A728D7FD1900994425 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05035A528D7FD1900994425 /* Main.storyboard */; };
@@ -26,7 +29,22 @@
 		A0C87B2D28D851A000B5880D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C87B2C28D851A000B5880D /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A02AE87628DF2CD5005F24BF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A02AE87528DF2CD5005F24BF /* SpotifyiOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A02AE87728DF2ED4005F24BF /* SpotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyManager.swift; sourceTree = "<group>"; };
 		A050359C28D7FD1900994425 /* originalMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = originalMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A050359F28D7FD1900994425 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A05035A128D7FD1900994425 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +61,8 @@
 		A05035C028D7FE6400994425 /* ShazamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamViewController.swift; sourceTree = "<group>"; };
 		A05035C228D7FE7300994425 /* ShazamDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamDetailViewController.swift; sourceTree = "<group>"; };
 		A05035C528D80F5600994425 /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
+		A0832FF928DE2C5000FED2D7 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		A0832FFB28DE353200FED2D7 /* swiftSpotify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swiftSpotify-Bridging-Header.h"; sourceTree = "<group>"; };
 		A0C87B2C28D851A000B5880D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0C87B2928D8196900B5880D /* RealmSwift in Frameworks */,
+				A02AE87428DF2CD5005F24BF /* SpotifyiOS.framework in Frameworks */,
 				A0C87B2728D8196900B5880D /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,9 +104,12 @@
 				A05035A128D7FD1900994425 /* SceneDelegate.swift */,
 				A0C87B2C28D851A000B5880D /* BaseViewController.swift */,
 				A05035C528D80F5600994425 /* DB.swift */,
+				A02AE87728DF2ED4005F24BF /* SpotifyManager.swift */,
 				A05035A528D7FD1900994425 /* Main.storyboard */,
 				A05035A828D7FD1A00994425 /* Assets.xcassets */,
 				A05035AA28D7FD1A00994425 /* LaunchScreen.storyboard */,
+				A0832FF928DE2C5000FED2D7 /* SpotifyiOS.framework */,
+				A0832FFB28DE353200FED2D7 /* swiftSpotify-Bridging-Header.h */,
 				A05035AD28D7FD1A00994425 /* Info.plist */,
 			);
 			path = originalMusicApp;
@@ -116,6 +140,7 @@
 				A050359828D7FD1900994425 /* Sources */,
 				A050359928D7FD1900994425 /* Frameworks */,
 				A050359A28D7FD1900994425 /* Resources */,
+				A02AE87628DF2CD5005F24BF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A05035B428D7FD5800994425 /* PlaylistViewController.swift in Sources */,
+				A02AE87828DF2ED4005F24BF /* SpotifyManager.swift in Sources */,
 				A05035C328D7FE7300994425 /* ShazamDetailViewController.swift in Sources */,
 				A05035BF28D7FE5800994425 /* AddPlaylistViewController.swift in Sources */,
 				A0C87B2D28D851A000B5880D /* BaseViewController.swift in Sources */,
@@ -275,6 +301,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -328,6 +355,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -342,6 +370,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/originalMusicApp",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = originalMusicApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -369,6 +401,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/originalMusicApp",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = originalMusicApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
