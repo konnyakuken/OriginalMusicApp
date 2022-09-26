@@ -9,10 +9,12 @@ import Foundation
 import UIKit
 import WebKit
 
-class SpotifyManager : NSObject {
+class SpotifyManager : NSObject{
+    
     // 設定
-    private let clientID = "<ClientID>"
-    private let redirectURL = URL(string: "HelloSpotify://spotify/callback")!
+    private let clientID = SecurityToken.ClientID
+    
+    private let redirectURL = URL(string: "swiftSpotify://spotify/callback")!
 
     // AppRemote
     var appRemote: SPTAppRemote!
@@ -20,7 +22,6 @@ class SpotifyManager : NSObject {
     // 初期化
     override init() {
         super.init()
-
         // AppRemoteの生成
         let configuration = SPTConfiguration(clientID: self.clientID, redirectURL: self.redirectURL)
         self.appRemote = SPTAppRemote(configuration: configuration, logLevel: .debug)

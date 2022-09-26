@@ -20,9 +20,9 @@ class SearchViewController: BaseViewController {
     }
     
     // URLコンテキスト取得時に呼ばれる
-    func onOpenURLContext(_ url: URL) {
-        self.spotifyManager.onURLContext(url)
-    }
+   func onOpenURLContext(_ url: URL) {
+       self.spotifyManager.onURLContext(url)
+   }
 
     // ボタンクリック時に呼ばれる
     @IBAction func onClick(sender: UIButton) {

@@ -14,7 +14,6 @@ class PlaylistViewController: BaseViewController,UICollectionViewDelegate,UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         extendedLayoutIncludesOpaqueBars = true
         
         // UICollectionView のデータを更新した後に追加

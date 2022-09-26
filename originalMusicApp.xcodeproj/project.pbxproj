@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A02AE87428DF2CD5005F24BF /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0832FF928DE2C5000FED2D7 /* SpotifyiOS.framework */; };
-		A02AE87528DF2CD5005F24BF /* SpotifyiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0832FF928DE2C5000FED2D7 /* SpotifyiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A02AE87828DF2ED4005F24BF /* SpotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02AE87728DF2ED4005F24BF /* SpotifyManager.swift */; };
 		A05035A028D7FD1900994425 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A050359F28D7FD1900994425 /* AppDelegate.swift */; };
 		A05035A228D7FD1900994425 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05035A128D7FD1900994425 /* SceneDelegate.swift */; };
@@ -27,6 +25,9 @@
 		A0C87B2728D8196900B5880D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = A0C87B2628D8196900B5880D /* Realm */; };
 		A0C87B2928D8196900B5880D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A0C87B2828D8196900B5880D /* RealmSwift */; };
 		A0C87B2D28D851A000B5880D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C87B2C28D851A000B5880D /* BaseViewController.swift */; };
+		A0CA306B28E04A2900F3D311 /* SpotifyiOS.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0CA306928E04A0900F3D311 /* SpotifyiOS.xcframework */; };
+		A0CA306C28E04A2900F3D311 /* SpotifyiOS.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0CA306928E04A0900F3D311 /* SpotifyiOS.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A0F7495228E17C1A00E41399 /* SecurityToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F7495128E17C1A00E41399 /* SecurityToken.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,7 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A02AE87528DF2CD5005F24BF /* SpotifyiOS.framework in Embed Frameworks */,
+				A0CA306C28E04A2900F3D311 /* SpotifyiOS.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,9 +62,10 @@
 		A05035C028D7FE6400994425 /* ShazamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamViewController.swift; sourceTree = "<group>"; };
 		A05035C228D7FE7300994425 /* ShazamDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamDetailViewController.swift; sourceTree = "<group>"; };
 		A05035C528D80F5600994425 /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
-		A0832FF928DE2C5000FED2D7 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		A0832FFB28DE353200FED2D7 /* swiftSpotify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swiftSpotify-Bridging-Header.h"; sourceTree = "<group>"; };
 		A0C87B2C28D851A000B5880D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		A0CA306928E04A0900F3D311 /* SpotifyiOS.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SpotifyiOS.xcframework; path = "../../../Downloads/ios-sdk-master/SpotifyiOS.xcframework"; sourceTree = "<group>"; };
+		A0F7495128E17C1A00E41399 /* SecurityToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityToken.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0C87B2928D8196900B5880D /* RealmSwift in Frameworks */,
-				A02AE87428DF2CD5005F24BF /* SpotifyiOS.framework in Frameworks */,
+				A0CA306B28E04A2900F3D311 /* SpotifyiOS.xcframework in Frameworks */,
 				A0C87B2728D8196900B5880D /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,8 +85,10 @@
 		A050359328D7FD1900994425 = {
 			isa = PBXGroup;
 			children = (
+				A0832FFB28DE353200FED2D7 /* swiftSpotify-Bridging-Header.h */,
 				A050359E28D7FD1900994425 /* originalMusicApp */,
 				A050359D28D7FD1900994425 /* Products */,
+				A0CA306828E04A0900F3D311 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,9 +112,8 @@
 				A05035A528D7FD1900994425 /* Main.storyboard */,
 				A05035A828D7FD1A00994425 /* Assets.xcassets */,
 				A05035AA28D7FD1A00994425 /* LaunchScreen.storyboard */,
-				A0832FF928DE2C5000FED2D7 /* SpotifyiOS.framework */,
-				A0832FFB28DE353200FED2D7 /* swiftSpotify-Bridging-Header.h */,
 				A05035AD28D7FD1A00994425 /* Info.plist */,
+				A0F7495128E17C1A00E41399 /* SecurityToken.swift */,
 			);
 			path = originalMusicApp;
 			sourceTree = "<group>";
@@ -128,6 +131,14 @@
 				A05035C228D7FE7300994425 /* ShazamDetailViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A0CA306828E04A0900F3D311 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0CA306928E04A0900F3D311 /* SpotifyiOS.xcframework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A05035B428D7FD5800994425 /* PlaylistViewController.swift in Sources */,
+				A0F7495228E17C1A00E41399 /* SecurityToken.swift in Sources */,
 				A02AE87828DF2ED4005F24BF /* SpotifyManager.swift in Sources */,
 				A05035C328D7FE7300994425 /* ShazamDetailViewController.swift in Sources */,
 				A05035BF28D7FE5800994425 /* AddPlaylistViewController.swift in Sources */,
@@ -389,6 +401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.wakamiya.konken.originalMusicApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "swiftSpotify-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -420,6 +433,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.wakamiya.konken.originalMusicApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "swiftSpotify-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
