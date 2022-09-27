@@ -65,12 +65,14 @@ class CreatePlaylistViewController: BaseViewController {
             newId = (Int(results[results.count - 1].id)) + 1
         } else {
             newPlaylist.id = 1
+            newId = 1
         }
         try! realm.write{
             realm.add(newPlaylist)
         }
         print(realm.objects(Playlist.self))
     }
+    
     
     
 
