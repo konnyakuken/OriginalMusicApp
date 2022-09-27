@@ -13,7 +13,6 @@ class SpotifyManager : NSObject{
     
     // 設定
     private let clientID = SecurityToken.ClientID
-    
     private let redirectURL = URL(string: "swiftSpotify://spotify/callback")!
 
     // AppRemote
@@ -31,6 +30,7 @@ class SpotifyManager : NSObject{
     func onURLContext(_ url: URL) {
         let parameters = appRemote.authorizationParameters(from: url);
         if let accessToken = parameters?[SPTAppRemoteAccessTokenKey] {
+            print(accessToken)
             self.appRemote.connectionParameters.accessToken = accessToken
         } else if let errorDescription = parameters?[SPTAppRemoteErrorDescriptionKey] {
             print("error : ", errorDescription)

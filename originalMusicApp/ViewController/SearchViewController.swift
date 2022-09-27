@@ -26,8 +26,10 @@ class SearchViewController: BaseViewController {
 
     // ボタンクリック時に呼ばれる
     @IBAction func onClick(sender: UIButton) {
-        self.spotifyManager.authorizeAndPlayURI("spotify:track:1I77T75FxVU3W9SfGDFwZO")
+        self.spotifyManager.authorizeAndPlayURI("spotify:track:5oEIkRwgx72M3fMWSowKxQ")
     }
+    
+    
     
 
 }

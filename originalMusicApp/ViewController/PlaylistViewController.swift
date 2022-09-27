@@ -21,6 +21,12 @@ class PlaylistViewController: BaseViewController,UICollectionViewDelegate,UIColl
         // Do any additional setup after loading the view.
     }
     
+    //Viewが表示されるたびに呼ばれる。
+    override func viewWillAppear(_ animated: Bool) {
+        let results = realm.objects(Playlist.self)
+        collectionView.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let result = realm.objects(Playlist.self).count
         //セクションの中のセルの数

@@ -73,7 +73,6 @@ class CreatePlaylistViewController: BaseViewController {
         print(realm.objects(Playlist.self))
     }
     
-    
-    
+
 
 }
