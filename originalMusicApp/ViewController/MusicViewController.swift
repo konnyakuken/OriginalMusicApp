@@ -1,14 +1,23 @@
 //
-//  MusicViewViewController.swift
+//  MusicViewController.swift
 //  originalMusicApp
 //
-//  Created by 若宮拓也 on 2022/09/19.
+//  Created by 若宮拓也 on 2022/09/28.
 //
 
 import UIKit
+import RealmSwift
 
-class MusicViewViewController: BaseViewController {
-
+class MusicViewController: UIViewController {
+    
+    @IBOutlet var musicName:UILabel!
+    @IBOutlet var musicJaket:UIImageView!
+    @IBOutlet var artist:UILabel!
+    @IBOutlet var playButton:UIButton!
+    @IBOutlet var nextButton:UIButton!
+    @IBOutlet var backButton:UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
