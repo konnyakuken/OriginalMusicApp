@@ -8,7 +8,10 @@
 import UIKit
 import RealmSwift
 
-class MusicViewController: UIViewController {
+class MusicViewController: BaseViewController {
+    
+    var playlistID = ""
+    var musicID = ""
     
     @IBOutlet var musicName:UILabel!
     @IBOutlet var musicJaket:UIImageView!
@@ -20,19 +23,21 @@ class MusicViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //ボタン設定
+        self.nextButton.setImage(UIImage(systemName: "forward.circle"), for: .normal)
+        self.backButton.setImage(UIImage(systemName: "backward.circle"), for: .normal)
+        self.playButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //Viewが表示されるたびに呼ばれる。
+    override func viewWillAppear(_ animated: Bool) {
+        let music = realm.objects(Music.self).filter("id == \(musicID)")[0]
+        musicName.text = music.name
+        artist.text = music.artist
+        let imageUrl:UIImage = self.getImageByUrl(url: music.thumbnail)
+        self.musicJaket.image = imageUrl
     }
-    */
-
+    
+    
 }

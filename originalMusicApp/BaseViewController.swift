@@ -32,5 +32,20 @@ class BaseViewController: UIViewController {
     func read() -> Playlist?{
         return realm.objects(Playlist.self).first
     }
+    
+    func readMusic() -> Music?{
+        return realm.objects(Music.self).first
+    }
+    
+    func getImageByUrl(url: String) -> UIImage{
+        let url = URL(string: url)
+        do {
+            let data = try Data(contentsOf: url!)
+            return UIImage(data: data)!
+        } catch let err {
+            print("Error : \(err.localizedDescription)")
+        }
+        return UIImage()
+    }
 
 }

@@ -18,12 +18,15 @@ class PlaylistViewController: BaseViewController,UICollectionViewDelegate,UIColl
         
         // UICollectionView のデータを更新した後に追加
         collectionView.reloadData()
-        // Do any additional setup after loading the view.
+        
+        // collectionViewレイアウト設定(行間)
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 30
+        collectionView.collectionViewLayout = layout
     }
     
     //Viewが表示されるたびに呼ばれる。
     override func viewWillAppear(_ animated: Bool) {
-        let results = realm.objects(Playlist.self)
         collectionView.reloadData()
     }
     
@@ -65,13 +68,14 @@ class PlaylistViewController: BaseViewController,UICollectionViewDelegate,UIColl
     
     //セルのサイズを指定する処理
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         // 横方向のスペース調整
-        let horizontalSpace:CGFloat = 5
-        //セルのサイズを指定。画面上にセルを3つ表示させたいのであれば、デバイスの横幅を3分割した横幅　- セル間のスペース*2（セル間のスペースが二つあるため）
-        let cellSize:CGFloat = self.view.bounds.width/3 - horizontalSpace*2
-
+        let horizontalSpace:CGFloat = 40
+        let cellSize:CGFloat = self.view.bounds.width/2 - horizontalSpace
         // 正方形で返すためにwidth,heightを同じにする
         return CGSize(width: cellSize, height: cellSize)
+        
+        
     }
     
     func toCreatePlaylist(){
@@ -88,5 +92,7 @@ class PlaylistViewController: BaseViewController,UICollectionViewDelegate,UIColl
         vc.id = String(id)
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+
 
 }

@@ -60,15 +60,25 @@ class PlaylistDetailViewController: BaseViewController,UITableViewDataSource,UIT
         cell.textLabel?.textColor = .white
         let imageUrl:UIImage = self.getImageByUrl(url: results[indexPath.row].thumbnail)
         cell.imageView?.image = imageUrl
-        cell.detailTextLabel?.text = "\(results[indexPath.row].artist)"
+        //cell.detailTextLabel?.text = "\(results[indexPath.row].artist)"
+        cell.detailTextLabel?.text = "\(results[indexPath.row].id)"
         
         return cell
     }
     
     //Cellがクリックされた時によばれる
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath.row)番目の行が選択されました。")
+        let results = realm.objects(Playlist.self).filter("id == %@",Int((id as NSString).doubleValue))[0].musics
+        //曲情報を送信
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: "musicDetail")as? MusicViewController else
+        { return }
+        vc.playlistID = String(id)
+        vc.musicID = String(results[indexPath.row].id)
+        self.present(vc, animated: true, completion: nil)
     }
+    
+    
     
     @objc func toAddMusic(_ sender: UIBarButtonItem) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -82,7 +92,14 @@ class PlaylistDetailViewController: BaseViewController,UITableViewDataSource,UIT
         let playlist = realm.objects(Playlist.self).filter("id == %@",Int((id as NSString).doubleValue))[0]
 
         let addMusic = Music()
-        addMusic.id = count
+        let music = readMusic()
+        if music != nil {
+            let musics = realm.objects(Music.self).count
+            addMusic.id = musics + 1
+        } else {
+            addMusic.id = 1
+        }
+        
         addMusic.spotify_id = ""
         addMusic.artist = "test\(count)"
         addMusic.album = "test\(count)"
@@ -94,15 +111,6 @@ class PlaylistDetailViewController: BaseViewController,UITableViewDataSource,UIT
         count += 1
     }
     
-    func getImageByUrl(url: String) -> UIImage{
-        let url = URL(string: url)
-        do {
-            let data = try Data(contentsOf: url!)
-            return UIImage(data: data)!
-        } catch let err {
-            print("Error : \(err.localizedDescription)")
-        }
-        return UIImage()
-    }
+    
 
 }
