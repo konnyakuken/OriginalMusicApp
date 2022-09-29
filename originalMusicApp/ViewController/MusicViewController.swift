@@ -10,6 +10,9 @@ import RealmSwift
 
 class MusicViewController: BaseViewController {
     
+    // Spotifyマネージャ
+   var spotifyManager: SpotifyManager!
+    
     var playlistID = ""
     var musicID = ""
     
@@ -27,7 +30,20 @@ class MusicViewController: BaseViewController {
         self.nextButton.setImage(UIImage(systemName: "forward.circle"), for: .normal)
         self.backButton.setImage(UIImage(systemName: "backward.circle"), for: .normal)
         self.playButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
+        // Spotifyマネージャの生成
+        self.spotifyManager = SpotifyManager()
 
+    }
+    
+    // URLコンテキスト取得時に呼ばれる
+   func onOpenURLContext(_ url: URL) {
+       self.spotifyManager = SpotifyManager()
+       self.spotifyManager.onURLContext(url)
+   }
+    
+    // ボタンクリック時に呼ばれる
+    @IBAction func onClick(sender: UIButton) {
+        self.spotifyManager.authorizeAndPlayURI("spotify:track:5oEIkRwgx72M3fMWSowKxQ")
     }
     
     //Viewが表示されるたびに呼ばれる。

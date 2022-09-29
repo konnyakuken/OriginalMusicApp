@@ -21,8 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
            guard let url = URLContexts.first?.url else {
                return
            }
-           let vc = window?.rootViewController as! SearchViewController
-           vc.onOpenURLContext(url)
+           let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+           let vc = storyBoard.instantiateViewController(withIdentifier: "musicDetail")as? MusicViewController
+           vc?.onOpenURLContext(url)
        }
 
     func sceneDidDisconnect(_ scene: UIScene) {
