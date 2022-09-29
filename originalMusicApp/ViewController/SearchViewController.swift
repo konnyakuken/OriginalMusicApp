@@ -8,19 +8,23 @@
 import UIKit
 import RealmSwift
 
-class SearchViewController: BaseViewController {
+class SearchViewController: BaseViewController,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate{
     
     
     private let clientID = SecurityToken.ClientID
     private let clientSecret = SecurityToken.ClientSecret
     @IBOutlet var searchTitleTextField:UITextField!
+    @IBOutlet var MusicTable: UITableView!
     
     var accessToken = ""
     var Musiclist = [MusicDetail]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        MusicTable.dataSource = self
+        MusicTable.delegate = self
+        searchTitleTextField.delegate = self
         // Do any additional setup after loading the view.
         
     }
@@ -31,7 +35,49 @@ class SearchViewController: BaseViewController {
         getAccessToken()
     }
     
-    @IBAction func search(){
+
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return Musiclist.count
+    }
+    
+    //セルに表示する内容
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MusicCell", for: indexPath)
+       
+        cell.textLabel?.text = "\(Musiclist[indexPath.row].name)"
+        cell.textLabel?.textColor = .white
+        let imageUrl:UIImage = self.getImageByUrl(url: Musiclist[indexPath.row].thumbnail)
+        cell.imageView?.image = imageUrl
+        //cell.detailTextLabel?.text = "\(results[indexPath.row].artist)"
+        cell.detailTextLabel?.text = "\(Musiclist[indexPath.row].artist)"
+        
+        return cell
+    }
+    
+    //Cellがクリックされた時によばれる
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let results = Musiclist[indexPath.row]
+        //曲情報を送信
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: "addPlaylistView")as? AddPlaylistViewController else
+        { return }
+        vc.Musiclist = [MusicDetail]()
+        vc.Musiclist.append(results)
+        navigationController?.pushViewController(vc, animated: true)
+        print(indexPath.row)
+    }
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            search()
+            return true
+        }
+    
+    
+    func search(){
+        Musiclist = [MusicDetail]()
         var title: String = searchTitleTextField.text!
         title = urlEncode(beforeText: title)
         let url = URL(string: "https://api.spotify.com/v1/search?q=\(title)&type=track")!  //URLを生成
@@ -42,13 +88,19 @@ class SearchViewController: BaseViewController {
             guard let data = data else { return }
             do {
                 let object = try JSONDecoder().decode(MusicData.self, from: data)
-                //let object = try JSONSerialization.jsonObject(with: data, options: [])
-                print(object)
+                for i in object.tracks.items {
+                    self.Musiclist.append(MusicDetail(spotify_id: i.uri, type: "Spotify", artist: i.album.artists[0].name, album: i.album.name, thumbnail: i.album.images[0].url, name: i.name, duration: i.duration_ms))
+                }
+                print(self.Musiclist)
+                DispatchQueue.main.async {
+                    self.MusicTable.reloadData()
+                }
             } catch let error {
                 print(error)
             }
         }
         task.resume()
+        
     }
     
 
@@ -108,7 +160,7 @@ struct Items: Codable{
 struct Album: Codable{
     var name: String
     var images: [Image]
-   // var artists:[Artist]
+    var artists:[Artist]
 }
 
 struct Image: Codable{
@@ -123,12 +175,4 @@ struct AccessToken: Codable {
     let access_token: String
 }
 
-struct MusicDetail {
-    var spotify_id: String
-    var type: String
-    var artist: String
-    var album: String
-    var thumbnail: String
-    var name: String
-    var duration: Int
-}
+

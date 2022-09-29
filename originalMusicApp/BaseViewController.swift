@@ -49,3 +49,13 @@ class BaseViewController: UIViewController {
     }
 
 }
+
+struct MusicDetail {
+    var spotify_id: String
+    var type: String
+    var artist: String
+    var album: String
+    var thumbnail: String
+    var name: String
+    var duration: Int
+}

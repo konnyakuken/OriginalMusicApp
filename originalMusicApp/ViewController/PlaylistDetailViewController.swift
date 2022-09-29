@@ -39,30 +39,33 @@ class PlaylistDetailViewController: BaseViewController,UITableViewDataSource,UIT
     
     //Viewが表示される直前に呼ばれる。
     override func viewWillAppear(_ animated: Bool) {
-        let playlistName = realm.objects(Playlist.self).filter("id == %@",Int((id as NSString).doubleValue))[0].playlist_name
-        playlistTitle.text = playlistName
-        
-        let results = realm.objects(Playlist.self).filter("id == %@",Int((id as NSString).doubleValue))[0].musics
-        print(results)
+        let playlistName = realm.objects(Playlist.self).filter("id == %@",Int((id as NSString).doubleValue))
+        if !playlistName.isEmpty{
+            playlistTitle.text = playlistName[0].playlist_name
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let results = realm.objects(Playlist.self).filter("id == %@",Int((id as NSString).doubleValue))[0].musics
+        let results = realm.objects(Playlist.self).filter("id == %@",Int((id as NSString).doubleValue))
+        if results.isEmpty{
+            return 0
+        }
         //セクションの中のセルの数
-        return results.count
+        return results[0].musics.count
     }
     
     //セルに表示する内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "musicCell", for: indexPath)
-        let results = realm.objects(Playlist.self).filter("id == %@",Int((id as NSString).doubleValue))[0].musics
-        cell.textLabel?.text = "\(results[indexPath.row].name)"
-        cell.textLabel?.textColor = .white
-        let imageUrl:UIImage = self.getImageByUrl(url: results[indexPath.row].thumbnail)
-        cell.imageView?.image = imageUrl
-        //cell.detailTextLabel?.text = "\(results[indexPath.row].artist)"
-        cell.detailTextLabel?.text = "\(results[indexPath.row].id)"
-        
+        let results = realm.objects(Playlist.self).filter("id == %@",Int((id as NSString).doubleValue))
+        if !results.isEmpty{
+            cell.textLabel?.text = "\(results[0].musics[indexPath.row].name)"
+            cell.textLabel?.textColor = .white
+            let imageUrl:UIImage = self.getImageByUrl(url: results[0].musics[indexPath.row].thumbnail)
+            cell.imageView?.image = imageUrl
+            //cell.detailTextLabel?.text = "\(results[indexPath.row].artist)"
+            cell.detailTextLabel?.text = "\(results[0].musics[indexPath.row].id)"
+        }
         return cell
     }
     
