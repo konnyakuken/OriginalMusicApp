@@ -61,8 +61,13 @@ class PlaylistDetailViewController: BaseViewController,UITableViewDataSource,UIT
         if !results.isEmpty{
             cell.textLabel?.text = "\(results[0].musics[indexPath.row].name)"
             cell.textLabel?.textColor = .white
-            let imageUrl:UIImage = self.getImageByUrl(url: results[0].musics[indexPath.row].thumbnail)
-            cell.imageView?.image = imageUrl
+            if(results[0].musics[indexPath.row].thumbnail == "0"){
+                cell.imageView?.image = UIImage(named: "noImage")
+            }else{
+                let imageUrl:UIImage = self.getImageByUrl(url: results[0].musics[indexPath.row].thumbnail)
+                cell.imageView?.image = imageUrl
+            }
+            
             //cell.detailTextLabel?.text = "\(results[indexPath.row].artist)"
             cell.detailTextLabel?.text = "\(results[0].musics[indexPath.row].id)"
         }

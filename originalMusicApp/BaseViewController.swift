@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import MediaPlayer
 
 class BaseViewController: UIViewController {
     
@@ -58,4 +59,15 @@ struct MusicDetail {
     var thumbnail: String
     var name: String
     var duration: Int
+}
+
+struct LocalMusicDetail {
+    //var music_data:MPMediaItemCollection
+    var music_data:String
+    var type: String
+    var artist: String
+    var album: String
+    //var thumbnail: MPMediaItemArtwork
+    var thumbnail: String
+    var name: String
 }

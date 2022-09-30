@@ -32,9 +32,9 @@ class AddPlaylistViewController: BaseViewController,UICollectionViewDelegate,UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let result = realm.objects(Playlist.self).count
+        let result = realm.objects(Playlist.self)
         //セクションの中のセルの数
-        return result
+        return result.count
     }
     
     //セルに表示する内容
@@ -48,14 +48,20 @@ class AddPlaylistViewController: BaseViewController,UICollectionViewDelegate,UIC
         
         
         let playlistDB = realm.objects(Playlist.self).filter("id == %@",indexPath.row+1)
-        if (!playlistDB.isEmpty){
+
+        if (!playlistDB[0].musics.isEmpty){
             label.text = String(playlistDB[0].playlist_name)
             let playlistImage = playlistDB[0].musics[0].thumbnail
-            let cellImage = getImageByUrl(url: playlistImage)
-            // UIImageをUIImageViewのimageとして設定
-            imageView.image = cellImage
+            if(playlistImage == "0"){
+                imageView.image = UIImage(named: "noImage")
+            }else{
+                let cellImage = getImageByUrl(url: playlistImage)
+                // UIImageをUIImageViewのimageとして設定
+                imageView.image = cellImage
+            }
         }else{
-            label.text = String("からです")
+            imageView.image = UIImage(named: "noImage")
+            label.text = String(playlistDB[0].playlist_name)
         }
         
         return cell
@@ -77,7 +83,7 @@ class AddPlaylistViewController: BaseViewController,UICollectionViewDelegate,UIC
             return CGSize(width: cellSize, height: cellSize)
         }
     
-    //曲追加(仮実装)
+ 
     func addMusic(num: Int){
         let playlist = realm.objects(Playlist.self).filter("id == %@",num + 1)[0]
 
@@ -89,7 +95,7 @@ class AddPlaylistViewController: BaseViewController,UICollectionViewDelegate,UIC
         } else {
             addMusic.id = 1
         }
-        
+        addMusic.type = Musiclist[0].type
         addMusic.spotify_id = Musiclist[0].spotify_id
         addMusic.artist = Musiclist[0].artist
         addMusic.album = Musiclist[0].album

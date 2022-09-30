@@ -52,8 +52,13 @@ class MusicViewController: BaseViewController {
         let music = realm.objects(Music.self).filter("id == \(musicID)")[0]
         musicName.text = music.name
         artist.text = music.artist
-        let imageUrl:UIImage = self.getImageByUrl(url: music.thumbnail)
-        self.musicJaket.image = imageUrl
+        if(music.thumbnail == "0"){
+            self.musicJaket.image = UIImage(named: "noImage")
+        }else{
+            let imageUrl:UIImage = self.getImageByUrl(url: music.thumbnail)
+            self.musicJaket.image = imageUrl
+        }
+        
     }
     
     @IBAction func changeSongStatus() {

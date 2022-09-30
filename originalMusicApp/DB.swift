@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import MediaPlayer
 
 class Playlist: Object{
     @objc dynamic var id: Int = 0
@@ -25,3 +26,7 @@ class Music: Object{
     @objc dynamic var name: String = ""
     @objc dynamic var duration: Int = 0
 }
+
+
+
+

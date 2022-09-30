@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A02AE87828DF2ED4005F24BF /* SpotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02AE87728DF2ED4005F24BF /* SpotifyManager.swift */; };
+		A03BE47528E72F5C008D88CA /* LocalMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03BE47428E72F5C008D88CA /* LocalMusicViewController.swift */; };
+		A03BE47728E74349008D88CA /* LocalAddPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03BE47628E74349008D88CA /* LocalAddPlaylistViewController.swift */; };
 		A05035A028D7FD1900994425 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A050359F28D7FD1900994425 /* AppDelegate.swift */; };
 		A05035A228D7FD1900994425 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05035A128D7FD1900994425 /* SceneDelegate.swift */; };
 		A05035A728D7FD1900994425 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A05035A528D7FD1900994425 /* Main.storyboard */; };
@@ -18,8 +20,6 @@
 		A05035B928D7FE2500994425 /* PlaylistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05035B828D7FE2500994425 /* PlaylistDetailViewController.swift */; };
 		A05035BD28D7FE4600994425 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05035BC28D7FE4600994425 /* SearchViewController.swift */; };
 		A05035BF28D7FE5800994425 /* AddPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05035BE28D7FE5800994425 /* AddPlaylistViewController.swift */; };
-		A05035C128D7FE6400994425 /* ShazamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05035C028D7FE6400994425 /* ShazamViewController.swift */; };
-		A05035C328D7FE7300994425 /* ShazamDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05035C228D7FE7300994425 /* ShazamDetailViewController.swift */; };
 		A05035C628D80F5600994425 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05035C528D80F5600994425 /* DB.swift */; };
 		A068793128E352FE00145C63 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A068793028E352FE00145C63 /* MusicViewController.swift */; };
 		A0C87B2728D8196900B5880D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = A0C87B2628D8196900B5880D /* Realm */; };
@@ -46,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		A02AE87728DF2ED4005F24BF /* SpotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyManager.swift; sourceTree = "<group>"; };
+		A03BE47428E72F5C008D88CA /* LocalMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMusicViewController.swift; sourceTree = "<group>"; };
+		A03BE47628E74349008D88CA /* LocalAddPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAddPlaylistViewController.swift; sourceTree = "<group>"; };
 		A050359C28D7FD1900994425 /* originalMusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = originalMusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A050359F28D7FD1900994425 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A05035A128D7FD1900994425 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,8 +60,6 @@
 		A05035B828D7FE2500994425 /* PlaylistDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailViewController.swift; sourceTree = "<group>"; };
 		A05035BC28D7FE4600994425 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A05035BE28D7FE5800994425 /* AddPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaylistViewController.swift; sourceTree = "<group>"; };
-		A05035C028D7FE6400994425 /* ShazamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamViewController.swift; sourceTree = "<group>"; };
-		A05035C228D7FE7300994425 /* ShazamDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShazamDetailViewController.swift; sourceTree = "<group>"; };
 		A05035C528D80F5600994425 /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 		A068793028E352FE00145C63 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		A0832FFB28DE353200FED2D7 /* swiftSpotify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swiftSpotify-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -126,9 +126,9 @@
 				A05035B828D7FE2500994425 /* PlaylistDetailViewController.swift */,
 				A05035BC28D7FE4600994425 /* SearchViewController.swift */,
 				A05035BE28D7FE5800994425 /* AddPlaylistViewController.swift */,
-				A05035C028D7FE6400994425 /* ShazamViewController.swift */,
-				A05035C228D7FE7300994425 /* ShazamDetailViewController.swift */,
 				A068793028E352FE00145C63 /* MusicViewController.swift */,
+				A03BE47428E72F5C008D88CA /* LocalMusicViewController.swift */,
+				A03BE47628E74349008D88CA /* LocalAddPlaylistViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -222,18 +222,18 @@
 			files = (
 				A05035B428D7FD5800994425 /* PlaylistViewController.swift in Sources */,
 				A0F7495228E17C1A00E41399 /* SecurityToken.swift in Sources */,
+				A03BE47728E74349008D88CA /* LocalAddPlaylistViewController.swift in Sources */,
 				A02AE87828DF2ED4005F24BF /* SpotifyManager.swift in Sources */,
-				A05035C328D7FE7300994425 /* ShazamDetailViewController.swift in Sources */,
 				A05035BF28D7FE5800994425 /* AddPlaylistViewController.swift in Sources */,
 				A0C87B2D28D851A000B5880D /* BaseViewController.swift in Sources */,
 				A068793128E352FE00145C63 /* MusicViewController.swift in Sources */,
+				A03BE47528E72F5C008D88CA /* LocalMusicViewController.swift in Sources */,
 				A05035BD28D7FE4600994425 /* SearchViewController.swift in Sources */,
 				A05035C628D80F5600994425 /* DB.swift in Sources */,
 				A05035B728D7FE1100994425 /* CreatePlaylistViewController.swift in Sources */,
 				A05035B928D7FE2500994425 /* PlaylistDetailViewController.swift in Sources */,
 				A05035A028D7FD1900994425 /* AppDelegate.swift in Sources */,
 				A05035A228D7FD1900994425 /* SceneDelegate.swift in Sources */,
-				A05035C128D7FE6400994425 /* ShazamViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
