@@ -11,9 +11,14 @@ import MediaPlayer
 
 class MusicViewController: BaseViewController,MPMediaPickerControllerDelegate {
     
+    public static var isPlayMusic: Bool = false
+    
     var player: MPMusicPlayerController!
     // Spotifyマネージャ
    var spotifyManager: SpotifyManager!
+    
+    var musiclist = [Int]()
+    var musicCount = 0
     
     var playlistID = ""
     var musicID = ""
@@ -47,28 +52,106 @@ class MusicViewController: BaseViewController,MPMediaPickerControllerDelegate {
     // ボタンクリック時に呼ばれる
     @IBAction func onClick(sender: UIButton) {
         let music = realm.objects(Music.self).filter("id == \(musicID)")[0]
-        if(music.type == "Spotify"){
-            self.spotifyManager.authorizeAndPlayURI(music.spotify_id)
-        }else{
-            let filter1 = MPMediaPropertyPredicate(value: music.spotify_id, forProperty: MPMediaItemPropertyPersistentID)
-                    let filterSet = Set([filter1])
-                    let mPMediaQuery = MPMediaQuery(filterPredicates: filterSet)
-                    //let data = mPMediaQuery.
-                    if let collections = mPMediaQuery.collections {
-                        print(MPMediaType.music)
-                        print(collections.count)
-                        for collection in collections {
-                            player.setQueue(with: collection)
-                            player.play()
-                            //collection.items[0].ToString()
-                        }
+        if(MusicViewController.isPlayMusic == false){
+            if(music.type == "Spotify"){
+                self.spotifyManager.authorizeAndPlayURI(music.spotify_id)
+            }else{
+                let filter1 = MPMediaPropertyPredicate(value: music.spotify_id, forProperty: MPMediaItemPropertyPersistentID)
+                let filterSet = Set([filter1])
+                let mPMediaQuery = MPMediaQuery(filterPredicates: filterSet)
+                //let data = mPMediaQuery.
+                if let collections = mPMediaQuery.collections {
+                    print(MPMediaType.music)
+                    print(collections.count)
+                    for collection in collections {
+                        player.setQueue(with: collection)
+                        player.play()
+                        //collection.items[0].ToString()
                     }
+                }
+            }
+            MusicViewController.isPlayMusic = true
+            self.playButton.setImage(UIImage(systemName: "pause.circle"), for: .normal)
+        }else{
+            if(music.type == "Spotify"){
+                self.spotifyManager.authorizeAndPlayURI(music.spotify_id)
+            }else{
+                let filter1 = MPMediaPropertyPredicate(value: music.spotify_id, forProperty: MPMediaItemPropertyPersistentID)
+                let filterSet = Set([filter1])
+                let mPMediaQuery = MPMediaQuery(filterPredicates: filterSet)
+                //let data = mPMediaQuery.
+                if let collections = mPMediaQuery.collections {
+                    print(MPMediaType.music)
+                    print(collections.count)
+                    for collection in collections {
+                        player.setQueue(with: collection)
+                        player.pause()
+                        //collection.items[0].ToString()
+                    }
+                }
+            }
+            MusicViewController.isPlayMusic = false
+            self.playButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
         }
         
     }
+    //self.spotifyManager.appRemote?.playerAPI?.resume() // 一時停止
 
     //Viewが表示されるたびに呼ばれる。
     override func viewWillAppear(_ animated: Bool) {
+        changeMusic()
+        let musics = realm.objects(Playlist.self).filter("id == \(playlistID)")[0].musics
+        musiclist = [Int]()
+        for i in musics{
+            musiclist.append(i.id)
+        }
+        musicCount = musiclist.count
+    }
+    
+    @IBAction func NextMusic() {
+        let nowMusic = musiclist.firstIndex(of: Int(musicID)!)
+        if nowMusic == musicCount-1 {
+            musicID = String(musiclist[0])
+        }else{
+            musicID = String(musiclist[nowMusic!+1])
+        }
+        changeMusic()
+        playMusic()
+    }
+    
+    @IBAction func BackMusic() {
+        let nowMusic = musiclist.firstIndex(of: Int(musicID)!)
+        if nowMusic == 0 {
+            musicID = String(musiclist[musicCount-1])
+        }else{
+            musicID = String(musiclist[nowMusic!-1])
+        }
+        changeMusic()
+        playMusic()
+    }
+    
+    func playMusic(){
+        let music = realm.objects(Music.self).filter("id == \(musicID)")[0]
+        if(music.type == "Spotify"){
+            self.spotifyManager.authorizeAndPlayURI(music.spotify_id)
+        }else{
+                let filter1 = MPMediaPropertyPredicate(value: music.spotify_id, forProperty: MPMediaItemPropertyPersistentID)
+                let filterSet = Set([filter1])
+                let mPMediaQuery = MPMediaQuery(filterPredicates: filterSet)
+                if let collections = mPMediaQuery.collections {
+                    print(MPMediaType.music)
+                    print(collections.count)
+                    for collection in collections {
+                        player.setQueue(with: collection)
+                        player.play()
+                    }
+                }
+            }
+            MusicViewController.isPlayMusic = true
+            self.playButton.setImage(UIImage(systemName: "pause.circle"), for: .normal)
+    }
+    
+    func changeMusic(){
         let music = realm.objects(Music.self).filter("id == \(musicID)")[0]
         musicName.text = music.name
         artist.text = music.artist
@@ -78,14 +161,6 @@ class MusicViewController: BaseViewController,MPMediaPickerControllerDelegate {
             let imageUrl:UIImage = self.getImageByUrl(url: music.thumbnail)
             self.musicJaket.image = imageUrl
         }
-        
     }
-    
-    @IBAction func changeSongStatus() {
-        self.spotifyManager.appRemote?.playerAPI?.resume() // 一時停止
-    }
-    
-    
-    
     
 }

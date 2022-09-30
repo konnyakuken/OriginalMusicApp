@@ -368,6 +368,9 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="BackMusic" destination="EnF-qD-NWR" eventType="touchUpInside" id="YcB-jx-xI2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsw-Kg-njU">
                                 <rect key="frame" x="261" y="597" width="80" height="70"/>
@@ -376,7 +379,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
-                                    <action selector="changeSongStatus" destination="EnF-qD-NWR" eventType="touchUpInside" id="7n7-kN-yVh"/>
+                                    <action selector="NextMusic" destination="EnF-qD-NWR" eventType="touchUpInside" id="Oix-RO-wuX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OH1-q8-sbu">

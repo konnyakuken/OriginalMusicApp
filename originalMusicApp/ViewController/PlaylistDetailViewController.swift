@@ -13,7 +13,7 @@ class PlaylistDetailViewController: BaseViewController,UITableViewDataSource,UIT
     var id = ""
     @IBOutlet var playlistTitle: UILabel!
     @IBOutlet var musicTable: UITableView!
-
+    
     
     var toSearchMusicButton:UIBarButtonItem!
     var count = 0
