@@ -71,3 +71,8 @@ struct LocalMusicDetail {
     var thumbnail: String
     var name: String
 }
+
+struct LocalMusicData{
+    var id:String
+    var music_data:MPMediaItemCollection
+}

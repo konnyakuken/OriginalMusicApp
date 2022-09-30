@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import MediaPlayer
 
 class LocalAddPlaylistViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 

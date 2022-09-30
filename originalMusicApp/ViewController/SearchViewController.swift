@@ -161,19 +161,17 @@ class SearchViewController: BaseViewController,UITableViewDataSource,UITableView
        print("曲が選択されていない")
        return
       }
-      
     let musicTitle = items[0].title!
     let musicArtist = items[0].artist!
     let albumTitle = items[0].albumTitle!
     let albunArtist = items[0].albumArtist!
     let localid = String(items[0].persistentID)
-    //let artWork = items[0].artwork! //アートワーク
- 
-     
-    //print(items[0])
          
       //player.setQueue(with: mediaItemCollection)
       //player.play() //曲の再生
+     
+         
+         
       //pickerを消す
     dismiss(animated: true, completion: nil)
          
@@ -190,6 +188,8 @@ class SearchViewController: BaseViewController,UITableViewDataSource,UITableView
         vc.Musiclist.append(LocalMusiclist[0])
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
     
 }
 
