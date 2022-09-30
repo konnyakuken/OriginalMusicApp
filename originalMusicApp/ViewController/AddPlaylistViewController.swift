@@ -20,9 +20,9 @@ class AddPlaylistViewController: BaseViewController,UICollectionViewDelegate,UIC
         // UICollectionView のデータを更新した後に追加
         collectionView.reloadData()
         
-        // collectionViewレイアウト設定(行間)
+        // レイアウトを調整
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 30
+        layout.sectionInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         collectionView.collectionViewLayout = layout
     }
     
@@ -44,10 +44,18 @@ class AddPlaylistViewController: BaseViewController,UICollectionViewDelegate,UIC
         let cell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaylistCell", for: indexPath)
         //label設定
         let label = cell.contentView.viewWithTag(1) as! UILabel
+        let imageView = cell.contentView.viewWithTag(3) as! UIImageView
         
-        let playlistDB = realm.objects(Playlist.self).filter("id == %@",indexPath.row)
+        
+        let playlistDB = realm.objects(Playlist.self).filter("id == %@",indexPath.row+1)
         if (!playlistDB.isEmpty){
             label.text = String(playlistDB[0].playlist_name)
+            let playlistImage = playlistDB[0].musics[0].thumbnail
+            let cellImage = getImageByUrl(url: playlistImage)
+            // UIImageをUIImageViewのimageとして設定
+            imageView.image = cellImage
+        }else{
+            label.text = String("からです")
         }
         
         return cell
@@ -64,15 +72,10 @@ class AddPlaylistViewController: BaseViewController,UICollectionViewDelegate,UIC
     
     //セルのサイズを指定する処理
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        // 横方向のスペース調整
-        let horizontalSpace:CGFloat = 40
-        let cellSize:CGFloat = self.view.bounds.width/2 - horizontalSpace
-        // 正方形で返すためにwidth,heightを同じにする
-        return CGSize(width: cellSize, height: cellSize)
-        
-        
-    }
+            let horizontalSpace : CGFloat = 40
+            let cellSize : CGFloat = self.view.bounds.width / 2 - horizontalSpace
+            return CGSize(width: cellSize, height: cellSize)
+        }
     
     //曲追加(仮実装)
     func addMusic(num: Int){

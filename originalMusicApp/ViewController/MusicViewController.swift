@@ -43,7 +43,8 @@ class MusicViewController: BaseViewController {
     
     // ボタンクリック時に呼ばれる
     @IBAction func onClick(sender: UIButton) {
-        self.spotifyManager.authorizeAndPlayURI("spotify:track:5oEIkRwgx72M3fMWSowKxQ")
+        let music = realm.objects(Music.self).filter("id == \(musicID)")[0]
+        self.spotifyManager.authorizeAndPlayURI(music.spotify_id)
     }
     
     //Viewが表示されるたびに呼ばれる。
@@ -53,6 +54,10 @@ class MusicViewController: BaseViewController {
         artist.text = music.artist
         let imageUrl:UIImage = self.getImageByUrl(url: music.thumbnail)
         self.musicJaket.image = imageUrl
+    }
+    
+    @IBAction func changeSongStatus() {
+        self.spotifyManager.appRemote?.playerAPI?.resume() // 一時停止
     }
     
     

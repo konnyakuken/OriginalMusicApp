@@ -19,10 +19,16 @@ class PlaylistViewController: BaseViewController,UICollectionViewDelegate,UIColl
         // UICollectionView のデータを更新した後に追加
         collectionView.reloadData()
         
-        // collectionViewレイアウト設定(行間)
+        // レイアウトを調整
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 30
+        layout.sectionInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         collectionView.collectionViewLayout = layout
+
+        
+        // collectionViewレイアウト設定(行間)
+        //let layout = UICollectionViewFlowLayout()
+        //layout.minimumLineSpacing = 30
+        //collectionView.collectionViewLayout = layout
     }
     
     //Viewが表示されるたびに呼ばれる。
@@ -43,13 +49,23 @@ class PlaylistViewController: BaseViewController,UICollectionViewDelegate,UIColl
         let cell:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaylistCell", for: indexPath)
         //label設定
         let label = cell.contentView.viewWithTag(1) as! UILabel
+        let imageView = cell.contentView.viewWithTag(3) as! UIImageView
         
         if(indexPath.row == 0){
             label.text = "新しいプレイリストを作成"
             label.numberOfLines = 0
+            let cellImage = UIImage(named: "iTunesArtwork")
+            imageView.image = cellImage
         }else{
             let playlistDB = realm.objects(Playlist.self).filter("id == %@",indexPath.row)
             label.text = String(playlistDB[0].playlist_name)
+            if(!playlistDB[0].musics.isEmpty){
+                let playlistImage = playlistDB[0].musics[0].thumbnail
+                let cellImage = getImageByUrl(url: playlistImage)
+                // UIImageをUIImageViewのimageとして設定
+                imageView.image = cellImage
+            }
+            
         }
         return cell
     }
@@ -65,18 +81,13 @@ class PlaylistViewController: BaseViewController,UICollectionViewDelegate,UIColl
         }
     }
     
-    
-    //セルのサイズを指定する処理
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        // 横方向のスペース調整
-        let horizontalSpace:CGFloat = 40
-        let cellSize:CGFloat = self.view.bounds.width/2 - horizontalSpace
-        // 正方形で返すためにwidth,heightを同じにする
-        return CGSize(width: cellSize, height: cellSize)
-        
-        
-    }
+            let horizontalSpace : CGFloat = 40
+            let cellSize : CGFloat = self.view.bounds.width / 2 - horizontalSpace
+            return CGSize(width: cellSize, height: cellSize)
+        }
+    
+    
     
     func toCreatePlaylist(){
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
