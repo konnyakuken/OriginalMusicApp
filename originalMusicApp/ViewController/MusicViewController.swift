@@ -154,6 +154,7 @@ class MusicViewController: BaseViewController,MPMediaPickerControllerDelegate {
     func changeMusic(){
         let music = realm.objects(Music.self).filter("id == \(musicID)")[0]
         musicName.text = music.name
+        musicName.adjustsFontSizeToFitWidth = true
         artist.text = music.artist
         if(music.thumbnail == "0"){
             self.musicJaket.image = UIImage(named: "noImage")
